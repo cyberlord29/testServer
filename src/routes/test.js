@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { request } from 'http';
 
 const router = Router();
 
@@ -16,8 +17,10 @@ router.get('/:testId', async (req, res) => {
 
 router.post('/', async (req, res) => {
   const test = await req.context.models.Test.create({
-    text: req.body.text,
-    user: req.context.me.id,
+    name: request.body.name,
+    creator: req.context.me.id,
+    status: "draft",
+    description: request.body.name,
   });
 
   return res.send(test);
