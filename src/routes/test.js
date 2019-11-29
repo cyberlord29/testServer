@@ -26,6 +26,14 @@ router.post('/', async (req, res) => {
   return res.send(test);
 });
 
+
+router.post('/publish/:testId', async (req, res) => {
+  
+  //get the test by id and change the status
+
+  return res.send(200);
+});
+
 router.delete('/:testId', async (req, res) => {
   const test = await req.context.models.Test.findById(
     req.params.testId,
